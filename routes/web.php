@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => view('welcome'))->name('index');
+
+Route::get('/catalogue', fn () => view('catalogue'))->name('catalogue');
+Route::post('/upload', [\App\Http\Controllers\Import::class, 'uploadFromCSV'])->name('upload');
